@@ -4,21 +4,47 @@ https://saintgimp.org/2013/01/22/merging-two-git-repositories-into-one-repositor
 
 Création du répertoire de base
 
-documents/History.txt ......... [C]
+  documents/History.txt ......... [C]
 
-git remote add -f old_back https://github.com/dmolinarius/trombi-back.git
-git merge --allow-unrelated-histories old_back/master
-git mv app.js back
-git mv bin back
-git mv package.json back
-git mv public back
-git mv routes back
-git mv students.save back
-git mv package-lock.json back
-git mv README.md back
-git mv students.json back
-git mv views back
+Récupération de trombi-back
 
-git add documents/History.txt
+  git remote add -f old_back https://github.com/dmolinarius/trombi-back.git
+  git merge --allow-unrelated-histories old_back/master
 
-git commit -m "Move trombi-back into back subdir
+  mkdir back
+
+  git mv app.js back
+  git mv bin back
+  git mv package.json back
+  git mv public back
+  git mv routes back
+  git mv students.save back
+  git mv package-lock.json back
+  git mv README.md back
+  git mv students.json back
+  git mv views back
+  git add documents/History.txt
+  git commit -m "Move trombi-back into back subdir"
+
+Récupération de trombi-front
+
+  git remote add -f old_front https://github.com/dmolinarius/trombi-front.git
+  git merge --allow-unrelated-histories old_front/master
+
+  -> fix .gitignore diffs
+
+  git add .gitignore
+  git commit
+
+  mkdir front
+
+  git mv angular.json front
+  git mv package.json front
+  git mv README.md front
+  git mv tsconfig.json front
+  git mv e2e front
+  git mv package-lock.json front
+  git mv src front
+  git mv tslint.json front
+  git add documents/History.txt
+  git commit -m "Move trombi-front into front subdir"
