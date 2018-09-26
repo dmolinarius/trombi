@@ -1,0 +1,20 @@
+<div *ngIf="student" class="container">
+<h2>{{student.first_name}} {{student.last_name}}</h2>
+<div>
+ <label>Prénom :
+  <input [(ngModel)]="student.first_name" placeholder="Jean">
+ </label>
+</div>
+<div>
+ <label>Nom :
+  <input [(ngModel)]="student.last_name" placeholder="Aymard">
+ </label>
+</div>
+<div>
+ <label>Trigramme :
+  <input [(ngModel)]="student.id" placeholder="jad">
+ </label>
+</div>
+</div>
+<button (click)="goBack()">retour</button>
+<button (click)="save()">modifier</button>

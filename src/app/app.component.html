@@ -1,0 +1,15 @@
+<div class="container">
+<h1>{{ title }}</h1>
+<div class="content">
+ <nav>
+  <a routerLink="/dashboard">Accueil</a>
+  <a routerLink="/students">&Eacute;tudiants</a>
+ </nav>
+ <main>
+  <router-outlet></router-outlet>
+ </main>
+ </div>
+ <footer>
+  <app-messages></app-messages>
+ </footer>
+</div>

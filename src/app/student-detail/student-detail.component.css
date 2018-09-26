@@ -1,0 +1,21 @@
+.container {
+  margin-top: 1.33em;
+}
+
+/* editor */
+div {
+  position: relative;
+}
+label {
+  color: #484;
+}
+input {
+  left: 7em;
+  position: absolute;
+  border: none;
+  border-bottom: 1px solid #ccc;
+}
+
+button {
+  margin: 1.33em 0.5em 0 0;
+}

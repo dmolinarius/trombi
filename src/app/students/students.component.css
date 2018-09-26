@@ -1,0 +1,85 @@
+/* students list */
+.students {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+  border: 1px solid #040;
+  border-radius: 5px;
+}
+.students li {
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  padding: 0;
+  height: 1.33em;
+}
+.students li:nth-child(odd) {
+  background-color: #cec;
+}
+.students li:first-child {
+  border-radius: 5px 5px 0;
+}
+.students li:last-child {
+  border-radius: 0 0 5px;
+}
+.id {
+  font-family: Consolas;
+  background-color: #484;
+  color: white;
+  padding: 0 0.5em;
+  height: 1.33em;
+  display: inline-block;
+  border-radius: 0 5px 5px 0;
+}
+.id:after {
+  content:':';
+}
+.students a {
+  text-decoration: none;
+  color: inherit;
+}
+.students .text {
+  position: relative;
+}
+.students .text:before {
+  content: " ";
+}
+.students li:hover .text {
+  left: .1em;
+  color: #666;
+}
+
+/* selected item */
+.selected {
+  color: #222;
+  font-weight: bold;
+}
+.selected .id {
+  background-color: #040;
+}
+
+/* toolbox */
+.container {
+  position: relative;
+}
+.toolbox {
+  position: absolute;
+  top: 0;
+  right:0
+}
+.toolbox label, .toolbox input, .toolbox button {
+  margin-left: 0.5em;
+}
+
+/* delete buttons */
+.delete {
+  position:absolute;
+  right: 0.5em;
+  background-color: #484;
+  color: white;
+  border-radius: 2px;
+  padding: 0 0.2em;
+  text-shadow: 1px 1px 1px #020;
+  line-height: 1em;
+  top: 0.16em;
+}

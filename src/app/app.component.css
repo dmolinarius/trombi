@@ -1,0 +1,45 @@
+/* layout */
+.container {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  bottom:0;
+  width: calc(100% - 4rem);
+  overflow: visible;
+}
+div.content {
+  flex:1;
+  overflow-y: auto;
+  margin-right: -2rem;
+  padding-right: 2rem;
+}
+footer {
+}
+
+
+nav {
+  border-bottom: 1px solid #053;
+}
+nav a {
+  padding: 5px 10px;
+  text-decoration: none;
+  display: inline-block;
+  background-color: #eee;
+  border-radius: 4px 4px 0 0;
+  margin-right: 0.5em;
+  border: 1px solid #053;
+  top: 1px;
+  position: relative;
+}
+nav a:visited, a:link {
+  color: #607d8b;
+}
+nav a:hover {
+  color: #039be5;
+  background-color: #cfd8dc;
+}
+nav a.active {
+  color: #039be5;
+}
+
