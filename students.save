@@ -1,0 +1,8 @@
+[
+  { "id":"jad", "first_name": "Jean", "last_name":"Aymard" },
+  { "id":"rde", "first_name": "Raymond", "last_name":"Deubaze" },
+  { "id":"eps", "first_name": "Elsa", "last_name":"Pliques" },
+  { "id":"jte", "first_name": "Justine", "last_name":"Titgoute" },
+  { "id":"jpu", "first_name": "Jean", "last_name":"Peuplu" },
+  { "id":"can", "first_name": "Charles", "last_name":"Atan" }
+]
