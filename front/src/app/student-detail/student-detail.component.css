@@ -8,6 +8,7 @@ div {
 }
 label {
   color: #484;
+  line-height:1.33em;
 }
 input {
   left: 7em;
