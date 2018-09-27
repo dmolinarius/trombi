@@ -39,3 +39,8 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# environment
+/back/*.env
+/front/src/environments/environment.prod.ts
+/front/src/environments/environment.heroku.ts

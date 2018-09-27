@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators'
 import { ajax } from 'rxjs/ajax'
 
+import { environment } from '../../environments/environment';
 import { MessageService } from './message.service';
 import { Student } from '../student';
 
@@ -16,8 +17,8 @@ const httpOptions = {
 })
 export class StudentService {
 
-  private studentsApi = 'http://localhost:3000/students';
-  private studentApi = 'http://localhost:3000/student';
+  private studentsApi = environment.studentsApi;
+  private studentApi = environment.studentApi;
 
   constructor(
     private http:HttpClient,
