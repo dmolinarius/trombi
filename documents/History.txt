@@ -1,4 +1,4 @@
-Merge des repositories front et back
+﻿Merge des repositories front et back
 ------------------------------------
 https://saintgimp.org/2013/01/22/merging-two-git-repositories-into-one-repository-without-losing-file-history/
 
@@ -48,3 +48,28 @@ Récupération de trombi-front
   git mv tslint.json front
   git add documents/History.txt
   git commit -m "Move trombi-front into front subdir"
+
+Passage à Angular 8
+-------------------
+
+https://angular.io/guide/updating
+
+passage à Angular 7
+  https://update.angular.io/#6.1:7.2
+  https://stackoverflow.com/questions/52970467/ng-update-to-specific-angular-version
+
+  ng update @angular/core@7.2.0
+
+  vi angular.json' - rename the following 'targets' fields to 'architect':
+    1) Line: 12; Column: 7
+    2) Line: 101; Column: 7
+
+  ng update @angular/core@7.2.0
+
+passage à Angular 8
+  
+  ng update @angular/cli
+
+  https://stackoverflow.com/questions/56773528/repository-is-not-clean-please-commit-or-stash-any-changes-before-updating-in-a
+
+  ng update @angular/core --allow-dirty
