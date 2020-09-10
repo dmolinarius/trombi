@@ -1,10 +1,13 @@
-<h3>&Eacute;tudiants : tête de liste</h3>
+<h3>Trombinoscope</h3>
 <div class="grid grid-pad">
   <a *ngFor="let student of students" class="col-1-4" routerLink="/detail/{{student.id}}">
-    <div class="module student">
+    <div id="{{student.id}}" class="module student" [class.hovered]="student.id === hoveredStudent"
+      (drop)="drop($event)" (dragover)="dragover($event)" (dragleave)="dragleave($event)">
       <h4>{{student.first_name}}</h4>
     </div>
   </a>
+  <div class="col-1-4">
+   <app-student-search></app-student-search>
+  </div>
 </div>
 
-<app-student-search></app-student-search>

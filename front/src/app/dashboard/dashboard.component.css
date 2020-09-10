@@ -36,7 +36,7 @@ h4 {
   border-radius: 2px;
 }
 .module:hover {
-  background-color: #eee;
+  opacity: 0.5;
   cursor: pointer;
   color: #607d8b;
 }
@@ -58,4 +58,8 @@ h4 {
   .module {
     min-width: 60px;
   }
+}
+.hovered {
+   box-shadow: 5px 5px 3px green;
+   opacity: 0.5;
 }
