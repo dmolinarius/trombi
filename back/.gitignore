@@ -1,16 +1,15 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
-/front/dist
-/front/tmp
-/front/out-tsc
+/dist
+/tmp
+/out-tsc
 
 # dependencies
-/back/node_modules
-/front/node_modules
+/node_modules
 
 # IDEs and editors
-.idea
+/.idea
 .project
 .classpath
 .c9/
@@ -27,20 +26,18 @@
 !.vscode/extensions.json
 
 # misc
-/front/.sass-cache
-/front/connect.lock
-/front/coverage
-/front/libpeerconnection.log
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
 npm-debug.log
 yarn-error.log
 testem.log
-/front/typings
+/typings
 
 # System Files
 .DS_Store
 Thumbs.db
 
 # environment
-/back/*.env
-/front/src/environments/environment.prod.ts
-/front/src/environments/environment.heroku.ts
+/*.env

@@ -51,6 +51,14 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true
+            },
+            "heroku": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.heroku.ts"
+                }
+              ]
             }
           }
         },
@@ -62,6 +70,9 @@
           "configurations": {
             "production": {
               "browserTarget": "trombi:build:production"
+            },
+            "heroku": {
+              "browserTarget": "trombi:build:heroku"
             }
           }
         },
