@@ -86,3 +86,35 @@ Passage à Angular 10
   https://update.angular.io/
 
   ng update @angular/core @angular/cli --allow-dirty
+
+Fix back
+--------
+
+  cd back
+  npm update
+
+  found 5 vulnerabilities (4 low, 1 critical)
+  run `npm audit fix` to fix them, or `npm audit` for details
+
+  npm audit
+  npm audit fix
+
+  fixed 0 of 5 vulnerabilities in 102 scanned packages
+  5 vulnerabilities required manual review and could not be updated
+
+  npm update express
+
+  found 5 vulnerabilities (4 low, 1 critical)
+  run `npm audit fix` to fix them, or `npm audit` for details
+
+  migrate from jade to pug
+  https://tutorialforlinux.com/2018/07/24/how-to-migrate-from-jade-to-pug-2-express-app/
+
+  npm install --save pug
+  vi app.js --> app.set('view engine','pug');
+  cd views
+  mv error.jade error.pug
+  mv index.jade index.pug
+  mv layout.jade layout.pug
+  cd ..
+  npm uninstall jade
