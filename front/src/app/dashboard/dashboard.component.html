@@ -1,13 +1,13 @@
 <h3>Trombinoscope</h3>
 <div class="grid grid-pad">
-  <a *ngFor="let student of students" class="col-1-4" routerLink="/detail/{{student.id}}">
-    <div id="{{student.id}}" class="module student" [class.hovered]="student.id === hoveredStudent"
-      (drop)="drop($event)" (dragover)="dragover($event)" (dragleave)="dragleave($event)">
-      <h4>{{student.first_name}}</h4>
-    </div>
-  </a>
+  <div *ngFor="let student of students" id="{{student.id}}" class="col-1-4 module student" 
+    [class.hovered]="student.id === hoveredStudent" [style.background-image]="'url('+student.image+')'"
+    (dragover)="dragover($event)" (dragleave)="dragleave($event)" (drop)="drop($event)" >
+    <span>{{student.first_name}}</span>
+    <a routerLink="/detail/{{student.id}}" (paste)="paste($event)" contenteditable
+      (mouseover)="over($event)" (mouseleave)="leave($event)"></a>
+  </div>
   <div class="col-1-4">
    <app-student-search></app-student-search>
   </div>
 </div>
-

@@ -1,13 +1,13 @@
 [class*='col-'] {
   float: left;
-  padding-right: 20px;
-  padding-bottom: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
 }
-[class*='col-']:last-of-type {
-  padding-right: 0;
+[class*='col-']:nth-of-type(5) {
+  margin-right: 0;
 }
-a {
-  text-decoration: none;
+.col-1-4 {
+  width: calc(0.2*(100% - 80px));
 }
 *, *:after, *:before {
   -webkit-box-sizing: border-box;
@@ -17,46 +17,56 @@ a {
 h3 {
   text-align: center; margin-bottom: 0;
 }
-h4 {
-  position: relative;
-}
 .grid {
   margin: 0;
+  position: relative;
 }
-.col-1-4 {
-  width: 25%;
+.grid-pad {
+  padding: 10px 0;
 }
 .module {
-  padding: 20px;
   text-align: center;
   color: #eee;
-  max-height: 120px;
-  min-width: 120px;
-  background-color: #607d8b;
+  height: 120px;
+  background-color: #aaa;
   border-radius: 2px;
+  position: relative;
+  font-size: 16px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
 }
 .module:hover {
   opacity: 0.5;
   cursor: pointer;
   color: #607d8b;
 }
-.grid-pad {
-  padding: 10px 0;
+.module span, .module a {
+  display: block;
+  width:100%;
+  height: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  position: absolute;
 }
-.grid-pad > [class*='col-']:last-of-type {
-  padding-right: 20px;
+.module span {
+  padding: 90px 20px 0;
+  color: white;
+  text-shadow: 1px 0 0 black, 0 1px 0 black, -1px 0 0 black, 0 -1px 0 black;
+}
+.module a {
+  text-decoration: none;
+  /* color: transparent; */
+}
+.module:hover a {
 }
 @media (max-width: 600px) {
   .module {
     font-size: 10px;
-    max-height: 75px; }
-}
-@media (max-width: 1024px) {
-  .grid {
-    margin: 0;
+    max-height: 75px;
   }
-  .module {
-    min-width: 60px;
+  .module span {
+    padding: 60px 10px 0;
   }
 }
 .hovered {

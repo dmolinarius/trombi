@@ -19,8 +19,25 @@ var app = express();
 //app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+/*
+** display size of request body
+**
+** HAS TO BE COMMENTED OUT FOR BODY PARSERS TO WORK PROPERLY
+**
+app.use(function(req,res,next) {
+  let body = '';
+  req.on('data', function(data) {
+    body += data;
+  });
+  req.on('end', function(data) {
+    console.log('request size',body.length);
+    next();
+  });
+});
+*/
+
 app.use(logger('dev'));
-app.use(express.json());
+app.use(express.json({limit:'5mb'}));
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -62,7 +79,7 @@ app.get('/student/:id', function(req,res,next) {
 });
 
 /* parse json body */
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit:'5mb'}));
 
 /* PUT update student */
 app.put('/student/:id', function(req,res,next) {
@@ -151,7 +168,7 @@ app.use(function(err, req, res, next) {
 // write students back to json file
 app.shutdown = function() {
   //console.log( "\ngracefully shutting down from  SIGINT (Crtl-C)" )
-  fs.writeFileSync(database, JSON.stringify(students), 'utf8');
+  fs.writeFileSync(database, JSON.stringify(students,null,2), 'utf8');
 }
 
 module.exports = app;

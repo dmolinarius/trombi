@@ -8,3 +8,5 @@ The [front](https://github.com/dmolinarius/trombi/tree/master/front) subdir hold
 The app is actually configured to use a real nodejs/express REST backend (see [back](https://github.com/dmolinarius/trombi/tree/master/back) subdir).
 
 FYI 'trombinoscope' means Facebook in french, hence the name of the repo ;-)
+
+Example student images generated at: https://thispersondoesnotexist.com/
