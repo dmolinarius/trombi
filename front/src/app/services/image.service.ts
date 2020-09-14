@@ -7,7 +7,7 @@ export class ImageService {
 
   constructor() { }
 
-  dropHandler(e:dragEvent,success,fail):void {
+  dropHandler(e,success,fail=()=>{}):void {
     if ( ! [...e.dataTransfer.items].some(item => {
       let type = item.type;
 
@@ -27,7 +27,7 @@ export class ImageService {
         reader.onload = e => {
           let data = e.target.result;
           // store student image
-          console.log('[ImageService.dropHandler]',type,data.substr(0,40));
+          console.log('[ImageService.dropHandler]',type,data.toString().substr(0,40));
           success(data);
         };
         reader.readAsDataURL(file);
@@ -52,7 +52,7 @@ export class ImageService {
         ;
         reader.onload = e => {
            let data = e.target.result;
-           console.log('[ImageService.pasteHandler]',data.substr(0,40));
+           console.log('[ImageService.pasteHandler]',data.toString().substr(0,40));
            success(data);
         }
         reader.readAsDataURL(blob);
