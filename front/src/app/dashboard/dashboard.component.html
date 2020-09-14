@@ -2,9 +2,9 @@
 <div class="grid grid-pad">
   <div *ngFor="let student of students" id="{{student.id}}" class="col-1-4 module student" 
     [class.hovered]="student.id === hoveredStudent" [style.background-image]="'url('+student.image+')'"
-    (dragover)="dragover($event)" (dragleave)="dragleave($event)" (drop)="drop($event)" >
+    (dragover)="dragover($event,student.id)" (dragleave)="dragleave($event)" (drop)="drop($event)" >
     <span>{{student.first_name}}</span>
-    <a routerLink="/detail/{{student.id}}" (paste)="paste($event)" contenteditable
+    <a routerLink="/detail/{{student.id}}" (paste)="paste($event,student.id)" contenteditable
       (mouseover)="over($event)" (mouseleave)="leave($event)"></a>
   </div>
   <div class="col-1-4">

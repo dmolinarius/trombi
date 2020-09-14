@@ -39,10 +39,9 @@ export class DashboardComponent implements OnInit {
   }
 
   // drag over module : set active student id
-  dragover(e): void {
+  dragover(e,id): void {
     // dragged over
-    let target = (e.target.nodeName == 'DIV') ? e.target : e.target.parentNode;
-    this.hoveredStudent = target.id;
+    this.hoveredStudent = id;
     e.preventDefault();
   }
 
@@ -65,10 +64,10 @@ export class DashboardComponent implements OnInit {
   }
 
   // paste image
-  paste(e):void {
+  paste(e,id):void {
     this.imageService.pasteHandler( e,
       data => {
-        this.updateStudentImageFromDataURL(e.target.parentNode.id,data);
+        this.updateStudentImageFromDataURL(id,data);
       }
     );
     e.preventDefault();
@@ -76,17 +75,18 @@ export class DashboardComponent implements OnInit {
 
   // update local and remote student model with dropped image
   updateStudentImageFromDataURL(id:string, dataURL:string):void {
-    console.log('id',id);
     let student = this.students.find(s => s.id == id);
     student.image = dataURL.toString();
 
     // update remote student
     this.studentService.updateStudent(student.id,student)
+    /*
     .subscribe(
       value => { console.log('PUT ok with value',value); },
       response => { console.log('PUT error',response); },
       () => { console.log('PUT observable now completed'); }
     );
+    */
   }
 
 }
