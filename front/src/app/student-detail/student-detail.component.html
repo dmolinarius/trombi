@@ -1,5 +1,15 @@
 <div *ngIf="student" class="container">
-<img src="{{student.image}}">
+<a (paste)="paste($event,student.id)" contenteditable
+      (click)="$event.preventDefault()"
+      (mouseover)="$event.target.focus()" (mouseleave)="$event.target.blur()">
+  <img *ngIf="student.image" src="{{student.image}}" (dragover)="dragover($event,student.id)"
+    (dragleave)="dragleave($event)" (drop)="drop($event)"
+    (mouseover)="$event.target.parentNode.focus()">
+  <div *ngIf="!student.image" class="placeholder" (dragover)="dragover($event,student.id)"
+    (dragleave)="dragleave($event)" (drop)="drop($event)"
+    (mouseover)="$event.target.parentNode.focus()"></div>
+</a>
+<div class="data">
 <h2>{{student.first_name}} {{student.last_name}}</h2>
 <div>
  <label>Prénom :
@@ -16,6 +26,7 @@
   <input [(ngModel)]="student.id" placeholder="jad">
  </label>
 </div>
-</div>
 <button (click)="goBack()">retour</button>
-<button *ngIf="student" (click)="save()">modifier</button>
+<button (click)="save()">modifier</button>
+</div>
+</div>

@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { StudentService }  from '../services/student.service';
+import { ImageService }  from '../services/image.service';
 import { Student } from '../student';
 
 @Component({
@@ -17,6 +18,7 @@ export class StudentDetailComponent implements OnInit {
   constructor(
     private route:ActivatedRoute,
     private studentService:StudentService,
+    private imageService:ImageService,
     private location:Location
   ) {}
 
@@ -30,25 +32,34 @@ export class StudentDetailComponent implements OnInit {
       .subscribe(student => this.student = student);
   }
 
-  goBack():void {
-    this.location.back();
-  }
-
   save():void {
     const id = this.route.snapshot.paramMap.get('id');
     this.studentService.updateStudent(id,this.student)
       .subscribe(
-        value => {
-           console.log('PUT ok');
-           console.log('PUT ok with value',value);
-           this.goBack();
-        },
-        response => {
-          console.log('PUT error',response);
-        },
-        () => {
-          console.log('PUT observable now completed');
-        }
+        value => { console.log('PUT ok with value',value); this.goBack(); },
+        response => { console.log('PUT error',response); },
+        () => { console.log('PUT observable now completed'); }
       );
   }
+
+  goBack():void {
+    this.location.back();
+  }
+
+  dragover(e) {
+    e.preventDefault();
+  }
+  dragleave(e) {
+    e.preventDefault();
+  }
+  drop(e) {
+    e.preventDefault();
+    this.imageService.dropHandler(e, d => this.student.image = d.toString());
+  }
+  paste(e) {
+    console.log('student-detail.paste',e);
+    e.preventDefault();
+    this.imageService.pasteHandler(e, d => this.student.image = d.toString());
+  }
+
 }
