@@ -28,16 +28,6 @@ export class DashboardComponent implements OnInit {
       .subscribe(students => this.students = students);
   }
 
-  // hover hyperlink : set focus to enable paste
-  over(e): void {
-     e.target.focus();
-  }
-
-  // leave hyperlink : remove focus
-  leave(e): void {
-     e.target.blur();
-  }
-
   // drag over module : set active student id
   dragover(e,id): void {
     // dragged over

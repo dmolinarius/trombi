@@ -56,7 +56,7 @@ h3 {
 }
 .module a {
   text-decoration: none;
-  /* color: transparent; */
+  color: transparent;
 }
 .module:hover a {
 }
