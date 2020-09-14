@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Student } from '../student';
 import { StudentService } from '../services/student.service';
+import { ImageService } from '../services/image.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,7 +14,10 @@ export class DashboardComponent implements OnInit {
   selectedStudent:string = "";
   hoveredStudent:string = "";
 
-  constructor( private studentService:StudentService ) { }
+  constructor(
+    private studentService:StudentService,
+    private imageService:ImageService,
+  ) { }
 
   ngOnInit() {
     this.getStudents();
@@ -51,62 +55,28 @@ export class DashboardComponent implements OnInit {
   // drop image
   drop(e): void {
     e.preventDefault();
-    this.hoveredStudent = "";
-
-    if ( ! [...e.dataTransfer.items].some(item => {
-      let type = item.type;
-
-      // drop image URL
-      if ( type == 'text/plain' || type == 'text/x-moz-url' ) {
-        console.log('[1] dropped ',type,e.dataTransfer.getData(type));
-        // TODO call service to upload image
-        return true;
-      }
-
-      // drop image from local system - TODO accept other formats
-      if ( type == 'image/png' || type == 'image/jpeg' ) {
-        let file = e.dataTransfer.files[0]
-          , reader = new FileReader()
-        ;
-        reader.onload = e => {
-          let data = e.target.result;
-          // store student image
-          console.log('[2] dropped', type, data.substr(0,80));
-          this.updateStudentImageFromDataURL(this.hoveredStudent,data);
-        };
-        reader.readAsDataURL(file);
-        return true;
-      }
-    })) {
-      // drop failed - TODO issue error message
-      console.log('dropped',e.dataTransfer);
-    }
+    this.imageService.dropHandler( e,
+      data => {
+        this.updateStudentImageFromDataURL(this.hoveredStudent,data);
+        this.hoveredStudent = "";
+      },
+      () => this.hoveredStudent = ""
+    );
   }
 
-  // paste image - solution from :
-  // https://stackoverflow.com/questions/6333814/how-does-the-paste-image-from-clipboard-functionality-work-in-gmail-and-google-c
+  // paste image
   paste(e):void {
-    let items = e.clipboardData.items;
-    for ( let index in items ) {
-      let item = items[index];
-      if ( item.kind === 'file' ) {
-        let blob = item.getAsFile()
-          , reader = new FileReader()
-          , id = e.target.parentNode.id
-        ;
-        reader.onload = e => {
-           let data = e.target.result;
-           console.log('paste',id,data.substr(0,80));
-           this.updateStudentImageFromDataURL(id,data);
-        }
-        reader.readAsDataURL(blob);
+    this.imageService.pasteHandler( e,
+      data => {
+        this.updateStudentImageFromDataURL(e.target.parentNode.id,data);
       }
-    }
+    );
     e.preventDefault();
   }
 
   // update local and remote student model with dropped image
   updateStudentImageFromDataURL(id:string, dataURL:string):void {
+    console.log('id',id);
     let student = this.students.find(s => s.id == id);
     student.image = dataURL.toString();
 
@@ -118,4 +88,5 @@ export class DashboardComponent implements OnInit {
       () => { console.log('PUT observable now completed'); }
     );
   }
+
 }
