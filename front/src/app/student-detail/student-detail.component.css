@@ -11,7 +11,7 @@ label {
   line-height:1.33em;
 }
 input {
-  left: 7em;
+  left: calc(200px + 7em);
   position: absolute;
   border: none;
   border-bottom: 1px solid #ccc;
@@ -19,4 +19,12 @@ input {
 
 button {
   margin: 1.33em 0.5em 0 0;
+}
+
+img {
+  display:block;
+  float: left;
+  width: 180px;
+  margin-right: 20px;
+  box-shadow: 2px 2px 2px #444;
 }

@@ -1,4 +1,5 @@
 <div *ngIf="student" class="container">
+<img src="{{student.image}}">
 <h2>{{student.first_name}} {{student.last_name}}</h2>
 <div>
  <label>Prénom :
@@ -17,4 +18,4 @@
 </div>
 </div>
 <button (click)="goBack()">retour</button>
-<button (click)="save()">modifier</button>
+<button *ngIf="student" (click)="save()">modifier</button>
