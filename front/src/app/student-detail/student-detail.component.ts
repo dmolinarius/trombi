@@ -36,7 +36,10 @@ export class StudentDetailComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.studentService.updateStudent(id,this.student)
       .subscribe(
-        value => { console.log('PUT ok with value',value); this.goBack(); },
+        value => {
+          console.log('PUT ok with value',JSON.stringify(value).substr(0,80)+'...');
+          this.goBack();
+        },
         response => { console.log('PUT error',response); },
         () => { console.log('PUT observable now completed'); }
       );
