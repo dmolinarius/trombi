@@ -34,3 +34,6 @@ img, .placeholder {
   height: 235px;
   background-color: #ccc;
 }
+.wide {
+  width: 25em;
+}
