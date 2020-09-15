@@ -107,7 +107,7 @@ app.put('/student/:id', function(req,res,next) {
 
 // normalize student image to dataURL
 function normalizeStudentImage(student,next) {
-  let URL = student.image
+  let URL = student.image || ''
     , client = null
   ;
   if ( URL.startsWith('data:') ) { next(); return; }
