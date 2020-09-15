@@ -3,7 +3,7 @@
   margin-right: 20px;
   margin-bottom: 20px;
 }
-[class*='col-']:nth-of-type(5) {
+[class*='col-']:nth-of-type(5n) {
   margin-right: 0;
 }
 .col-1-4 {

@@ -67,12 +67,11 @@ export class DashboardComponent implements OnInit {
   updateStudentImageFromDataURL(id:string, dataURL:string):void {
     let student = this.students.find(s => s.id == id);
     student.image = dataURL.toString();
-    console.log('updateStudentImageFromDataURL',student);
 
     // update remote student - TODO cancel local update if request failed
     this.studentService.updateStudent(student.id,student)
     .subscribe(
-      value => { console.log('PUT ok with value',value); },
+      value => { console.log('PUT ok with value',JSON.stringify(value).substr(0,80)+'...'); },
       response => { console.log('PUT error',response); },
       () => { console.log('PUT observable now completed'); }
     );
