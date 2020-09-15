@@ -24,8 +24,9 @@ export class DashboardComponent implements OnInit {
   }
 
   getStudents(): void {
-    this.studentService.getStudents()
-      .subscribe(students => this.students = students);
+    this.studentService.getStudents().subscribe( students => {
+      this.students = students.sort((a,b) => a.last_name.localeCompare(b.last_name));
+    });
   }
 
   // drag over module : set active student id
