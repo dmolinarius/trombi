@@ -12,7 +12,9 @@
  <li *ngFor="let student of students" [class.selected]="student === selectedStudent">
   <a routerLink="/detail/{{student.id}}">
    <span class="id">{{student.id}}</span>
-   <span class="text">{{student.first_name}} {{student.last_name}}</span>
+   <span class="text name">{{student.first_name}} {{student.last_name}}</span>
+   <span class="text"> - </span>
+   <span class="text origin">{{student.origin}}</span>
   </a>
   <span class="delete" title="supprimer {{student.first_name}} {{student.last_name}}" (click)="delete(student)">x</span>
  </li>

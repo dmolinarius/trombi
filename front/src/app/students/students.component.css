@@ -38,15 +38,17 @@
   text-decoration: none;
   color: inherit;
 }
-.students .text {
-  position: relative;
-}
-.students .text:before {
-  content: " ";
-}
 .students li:hover .text {
   left: .1em;
   color: #666;
+}
+.name {
+  display: inline-block;
+  margin-left: 0.33em;
+  width: 12em;
+}
+.origin {
+  display: inline-block;
 }
 
 /* selected item */
