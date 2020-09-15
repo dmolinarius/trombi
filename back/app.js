@@ -98,10 +98,49 @@ app.put('/student/:id', function(req,res,next) {
     next(createError(400,'Duplicate id '+student.id));
   }
   else {
-    students.splice(i,1,student);
-    res.status(200).json(student);
+    normalizeStudentImage(student,() => {
+      students.splice(i,1,student);
+      res.status(200).json(student);
+    });
   }
 });
+
+// normalize student image to dataURL
+function normalizeStudentImage(student,next) {
+  let URL = student.image
+    , client = null
+  ;
+  if ( URL.startsWith('data:') ) { next(); return; }
+  else if ( URL.startsWith('http:') ) {
+    client = require('http');
+  }
+  else if ( URL.startsWith('https:') ) {
+    client = require('https');
+  }
+  else {
+    student.image = ''; next(); return;
+  }
+  client.get(URL, res => {
+    let data = []
+      , type = res.headers['content-type']
+    ;
+    if ( type == 'image/png' || type == 'image/jpeg' ) {
+      res.on('data', chunk => data.push(chunk));
+      res.on('end', () => {
+        // concat array of Buffers
+        let buf = Buffer.concat(data)
+          , encoded = buf.toString('base64')
+        ;
+        student.image = `data:${type};base64,`+encoded;
+        next();
+      });
+    }
+    else { // not an image
+      student.image = '';
+      next();
+    }
+  });
+}
 
 /* POST new student */
 app.post('/student', function(req,res,next) {
@@ -148,6 +187,7 @@ app.delete('/student/:id', function(req,res,next) {
     res.status(200).end();
   }
 });
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
