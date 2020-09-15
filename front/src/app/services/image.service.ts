@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,13 +14,13 @@ export class ImageService {
 
       // drop image URL
       if ( type == 'text/plain' || type == 'text/x-moz-url' ) {
-        console.log('[ImageService.dropHandler]',type,e.dataTransfer.getData(type));
-        // TODO call service to upload image
-        fail();
+        let URL = e.dataTransfer.getData(type).split('\n')[0]
+        console.log('[ImageService.dropHandler]',URL);
+        success(URL);
         return true;
       }
 
-      // drop image from local system - TODO accept other formats
+      // drop image from local system - TODO accept other formats (?)
       if ( type == 'image/png' || type == 'image/jpeg' ) {
         let file = e.dataTransfer.files[0]
           , reader = new FileReader()
