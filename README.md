@@ -9,4 +9,6 @@ The app is actually configured to use a real nodejs/express REST backend (see [b
 
 FYI 'trombinoscope' means Facebook in french, hence the name of the repo ;-)
 
-Example student images generated at: https://thispersondoesnotexist.com/
+The app has been lastly extended to display student faces on dashboard and detail view. The images may be pasted from clipboard or dropped from local filesystem or from browser, onto dashboard cell or detail view.
+
+The example student faces part of the student.json example database file have been generated online thanks to https://thispersondoesnotexist.com/.
