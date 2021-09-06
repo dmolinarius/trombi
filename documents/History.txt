@@ -118,3 +118,21 @@ Fix back
   mv layout.jade layout.pug
   cd ..
   npm uninstall jade
+
+Passage à Angular 12
+--------------------
+  https://angular.io/guide/updating-to-version-12
+
+  cd front
+  ng update @angular/core@11 @angular/cli@11 --allow-dirty
+  ng update @angular/core@12 @angular/cli@12 --allow-dirty
+
+  npm update --force
+
+  npm audit fix
+
+Fix back
+--------
+
+  cd back
+  npm update
